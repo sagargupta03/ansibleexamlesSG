@@ -1,0 +1,10 @@
+---
+
+ - hosts: slave1
+   become: yes
+   name: play1
+   tasks:
+    - name: Install Apache 
+      apt: name=apache2 state=latest
+    - name: Adding Website 
+      script: hello.sh
