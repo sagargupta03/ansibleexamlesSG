@@ -4,7 +4,8 @@
    become: yes
    name: play1
    tasks:
-    - name: Install Apache 
+    - name: Install Apache
       apt: name=apache2 state=latest
-    - name: Adding Website 
+    - name: Adding Website
       script: hello.sh
+
