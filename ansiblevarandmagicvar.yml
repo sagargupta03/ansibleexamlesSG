@@ -1,0 +1,15 @@
+
+--- # ansiblevarandmagicvar.yml
+- hosts: prod
+  vars:
+    inv_list: /home/ubuntu/invlist.txt
+  tasks:
+  - name: Create a new file
+    file:
+      path: "{{ inv_list }}"
+      state: touch
+  - name: copy hosts - It is just a caption for task
+    lineinfile:
+      path: "{{ inv_list }}"
+      line: "{{ ansible_hostname }}"
+

@@ -1,0 +1,16 @@
+--- # varfromfile.yml
+- hosts: prod
+  vars:
+    companyFile: /home/ubuntu/companylist.txt
+  tasks:
+  - name: create company list
+    file: 
+      state: touch
+      path: "{{ companyFile }}"
+  - name: add names 
+    lineinfile: 
+      path: "{{ companyFile }}"
+      line: "{{ item }}"
+    with_items:
+      - "{{ IT }}"
+      - "{{ nonIT }}"
