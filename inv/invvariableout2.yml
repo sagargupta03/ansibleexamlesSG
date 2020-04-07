@@ -1,0 +1,10 @@
+---
+
+ - hosts: slave1
+   become: yes
+   vars_files:
+     - myinv2
+   name: play1
+   tasks:
+    - name: Install Apache
+      apt: name='{{apache_package}}' state=latest

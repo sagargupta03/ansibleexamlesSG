@@ -1,0 +1,5 @@
+all:
+  hosts:
+    slave1
+  vars:
+    IP_adress: 54.221.94.206
