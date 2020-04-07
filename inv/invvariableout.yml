@@ -1,0 +1,11 @@
+---
+
+ - hosts: slave1
+   become: yes
+   vars_files:
+     - prod_vars
+   name: play1
+   tasks:
+    - name: Install Apache
+      apt: name='{{apache_package}}' state=latest
+
