@@ -1,0 +1,7 @@
+all:
+  hosts:
+    54.221.94.206
+  children:
+    prodchild1:
+      hosts:
+        54.221.94.206
