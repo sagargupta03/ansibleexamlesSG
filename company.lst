@@ -3,8 +3,11 @@ IT:
   - TCS
   - CTS
   - Accenture
+  - HSBC
 nonIT:
   - Reliance
   - LAndT
   - PAndG
   - Hero Honda
+misc:
+  - defence

@@ -1,0 +1,13 @@
+- hosts: slave3
+  tasks:
+    - name: create a file
+      file:
+        path: /home/ubuntu/abc.txt
+        state: touch
+      register: optouch
+    - debug: msg="Registered output is {{optouch}}"
+    - name: Put the dest and gid in a file
+      lineinfile:
+        path: /home/ubuntu/abc.txt
+        line: ' dest is "{{optouch.dest}}:gid is {{optouch.gid}}: mode is {{optouch.mode}}" '
+

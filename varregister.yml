@@ -1,0 +1,14 @@
+---
+#Debug and register and output gets written with line in file
+- hosts: slave3
+  tasks:
+    - name: create a file
+      file:
+        path: /home/ubuntu/abc.txt
+        state: touch
+      register: optouch
+    - debug: msg="Registered output is {{optouch}}"
+    - name: Put the dest and gid in a file
+      lineinfile: 
+        path: /home/ubuntu/abc.txt
+        line: "{{optouch.dest}}:{{optouch.gid}}:{{optouch.mode}}"

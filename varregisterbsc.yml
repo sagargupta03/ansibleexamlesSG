@@ -1,0 +1,10 @@
+---
+#Debug and register
+- hosts: slave3
+  tasks: 
+    - name: create a file
+      file: 
+        path: /home/ubuntu/abc.txt
+        state: touch
+      register: optouch
+    - debug: msg="Registered output is {{optouch}}"

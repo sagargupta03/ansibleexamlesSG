@@ -1,16 +1,16 @@
---- # varfromfile.yml ansible-playbook varfromfile.yml -e "@company.lst"
 - hosts: dev
   vars:
     companyFile: /home/ubuntu/companylist.txt
   tasks:
   - name: create company list
-    file: 
+    file:
       state: touch
       path: "{{ companyFile }}"
-  - name: add names 
-    lineinfile: 
+  - name: add names
+    lineinfile:
       path: "{{ companyFile }}"
       line: "{{ item }}"
     with_items:
       - "{{ IT }}"
       - "{{ nonIT }}"
+      - "{{ misc }}"
