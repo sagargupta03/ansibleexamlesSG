@@ -1,0 +1,14 @@
+ - hosts: slave1
+   become: yes
+   name: play1
+   tasks:
+    - name: Install Apache2 server 
+      when:"ansible_distribution"== "Ubuntu",
+      apt: 
+       name=apache2
+       state=latest
+    - name: Install httpd 
+      when:"ansible_distribution"=="red_hat",
+      yum:
+       name=httpd
+       state=latest
