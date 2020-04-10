@@ -1,0 +1,24 @@
+--- # having a command post ignore error lets see what happnes ignoreerrorpostcmdexec.yml
+- hosts: prod
+  tasks:
+  - name: install Red Hat
+    yum:
+      name: httpd
+      state: latest
+    when: "ansible_os_family == 'RedHat'"
+    ignore_errors: yes
+  - name: create test file
+    file:
+      path: /home/ubuntu/samplerh.txt
+      state: touch
+
+  - name: install Debian
+    apt:
+      name: apache2
+      state: latest
+    when: "ansible_os_family == 'Debian'"
+    ignore_errors: yes
+  - name: create test
+    file:
+      path: /home/ubuntu/sampledb.txt
+      state: touch

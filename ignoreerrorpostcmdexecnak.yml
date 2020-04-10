@@ -1,0 +1,20 @@
+--- # having a command post ignore error lets see what happnes ignoreerrorpostcmdexec.yml
+- hosts: prod
+  tasks:
+  - name: install Red Hat
+    yum:
+      name: httpd
+      state: latest
+  - name: create testredhat
+    file:
+      path: /home/ubuntu/redhatsample.txt
+      state: touch
+
+  - name: install Debian
+    apt:
+      name: apache2
+      state: latest
+  - name: create testdeb
+    file:
+      path: /home/ubuntu/debiansample.txt
+      state: touch
