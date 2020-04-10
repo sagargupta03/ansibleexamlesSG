@@ -1,0 +1,8 @@
+---
+- hosts: prod
+  tasks:
+    - name: deply the config file
+      template: 
+        src: /home/ubuntu/ansibleexamples/ansibleexamplesSG/template/template.j2
+        dest: /home/ubuntu/finalconfig.conf
+
