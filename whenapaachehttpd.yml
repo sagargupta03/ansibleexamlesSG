@@ -1,0 +1,12 @@
+--- # use of gathered facts of remote server whenapaachehttpd.yml
+ - hosts: prod
+   become: yes
+   name: play1
+   tasks:
+    - name: Install Apache
+      when: ansible_distribution == "Ubuntu"
+      apt: name=apache2 state=latest
+
+    - name: Install httpd
+      when: ansible_distribution == "red_hat"
+      yum: name=httpd state=latest

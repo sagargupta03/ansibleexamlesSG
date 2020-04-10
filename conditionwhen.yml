@@ -1,0 +1,26 @@
+--- # use of gathered facts of remote server and when condition specific to one host conditionwhen.yml
+- hosts: prod
+  become: yes
+  tasks:
+    - name: install apache
+      apt:
+        name: apache2
+    - name: start and enable apache
+      service:
+        name: apache2
+        state: started
+        enabled: yes
+    - name: create index.html
+      file:
+        path: /var/www/html/index.html
+        state: touch
+    - name: add a line to index.html
+      lineinfile:
+        path: /var/www/html/index.html
+        line: "<h1>Hello World1!</h1>"
+    - name: edit index.html file
+      lineinfile :
+        path : /var/www/html/index.html
+        line : "This is for when example for only ansible_hostname -ip-172-31-44-152"
+      when: 
+        - ansible_hostname == "ip-172-31-44-152"
