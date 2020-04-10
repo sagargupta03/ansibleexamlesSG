@@ -1,0 +1,17 @@
+--- # Handler for restarting web server on config change
+- hosts: jenkins
+  become: yes
+  handlers: 
+    - name: restart apache
+      service:
+        name: httpd
+        state: restarted
+      listen: "restart webserver"
+  tasks: 
+    - name: change configuration
+      replace:
+        path: /etc/httpd/conf/httpd.conf
+        regexp: '^DocumentRoot.*$'
+        replace: 'DocumentRoot "/var/www/html"'
+        backup: yes
+      notify: "restart webserver"   

@@ -1,0 +1,22 @@
+--- # Notification and handling events lisnter
+- hosts: slave1
+  remote_user: ubuntu
+  become: yes
+  become_method: sudo
+  connection: ssh
+  gather_facts: yes
+
+  tasks:
+  - name: Install apache2
+    apt:
+      name: apache2
+      state: latest
+    notify:
+    - "start webserver"
+  handlers:
+  - name: enable and restart_apache2
+    service:
+      name: apache2
+      enabled: yes
+      state: restarted
+    listen: "start webserver"

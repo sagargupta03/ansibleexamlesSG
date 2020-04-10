@@ -1,0 +1,12 @@
+- hosts: slave1
+  remote_user: ubuntu
+  become: yes
+  become_method: sudo
+  connection: ssh
+  gather_facts: yes
+
+  tasks:
+  - name: Install_apache2
+    apt:
+      name: apache2
+      state: absent
